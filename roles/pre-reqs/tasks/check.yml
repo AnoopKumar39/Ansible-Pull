@@ -1,0 +1,13 @@
+- name: Check the Selinux Status 
+  shell: sestatus | grep 'SELinux status:' |awk '{print $NF}'
+  register: out 
+
+- name: SELINUX is Running 
+  shell: "false" 
+  when: out.stdout == 'permissive' or out.stdout == 'enforcing'
+
+- name: Disable Firewall 
+  service:
+    name: firewalld 
+    state: stopped 
+  when: ansible_distribution == "CentOS"
