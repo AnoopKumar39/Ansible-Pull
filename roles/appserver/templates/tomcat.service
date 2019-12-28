@@ -1,0 +1,15 @@
+[Unit]
+Description=Tomcat - instance
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+User={{APP_USER}}
+Group={{APP_USER}}
+
+ExecStart={{TOMCAT_HOME}}/bin/startup.sh
+ExecStop={{TOMCAT_HOME}}/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
