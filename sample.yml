@@ -1,0 +1,6 @@
+- name: Demo on ansible-pull set-up with sample
+  hosts: localhost
+  tasks:
+   - name: Print a simple message with sample
+     debug:
+       msg: Hello World! from Sample.
