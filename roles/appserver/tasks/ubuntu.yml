@@ -1,0 +1,52 @@
+- name: Update ubuntu repos
+  shell: apt-get update
+
+- name: Install Java
+  apt:
+   name: openjdk-8-jdk
+   state: present
+
+- name: Create Application User
+  user: 
+   name: "{{APP_USER}}"
+
+- name: Dowmload Tomcat
+  unarchive:
+   src: "{{TOMCAT_URL}}"
+   dest: "{{APP_HOME}}"
+   remote_src: yes
+  become_user: "{{APP_USER}}"
+
+- name: Download WAR File
+  get_url:
+   url: "{{WAR_URL}}"
+   dest: "{{TOMCAT_HOME}}/webapps/student.war"
+  become_user: "{{APP_USER}}"
+  notify: Restart Tomcat
+
+- name: Download JDBC Jar File
+  get_url:
+   url: "{{JDBC_URL}}"
+   dest: "{{TOMCAT_HOME}}/lib/mysql-connector.jar"
+  become_user: "{{APP_USER}}"
+  notify: Restart Tomcat
+
+- name: Copy context.xml file
+  template:
+    src: context.xml.j2
+    dest: "{{TOMCAT_HOME}}/conf/context.xml"
+  become_user: "{{APP_USER}}"
+  notify: Restart Tomcat
+  
+- name: Download tomcat init script
+  template:
+   src: tomcat.service
+   dest: /etc/systemd/system/tomcat.service
+   mode: '0755'
+  notify: Reload systemctl daemon
+
+- name: Start Tomcat service
+  service:
+   name: tomcat
+   state: started
+   enabled: yes
