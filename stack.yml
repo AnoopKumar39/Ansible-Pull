@@ -1,5 +1,5 @@
 - name: Install web and app severs
-  hosts: all
+  hosts: localhost
   become: yes
   roles:
    - webserver
