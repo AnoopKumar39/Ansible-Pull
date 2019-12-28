@@ -1,0 +1,7 @@
+- name: Restart Tomcat
+  service:
+    name: tomcat 
+    state: restarted 
+    
+- name: Reload systemctl daemon 
+  shell: systemctl daemon-reload
