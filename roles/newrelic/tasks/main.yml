@@ -1,3 +1,8 @@
+- name: Install JQ 
+  package:
+    name: jq 
+    state: installed 
+
 - name: Upload license key 
   lineinfile:
     path: /etc/newrelic-infra.yml
@@ -13,3 +18,25 @@
   yum:
     name: newrelic-infra
     state: present
+
+- name: Copy templates 
+  template:
+    src: "{{item}}.j2"
+    dest: "/tmp/{{item}}"
+  loop:
+    - httpd-proc-check.json
+    - tomcat-proc-check.json
+    - host-not-report.json
+
+- name: Copy alert make script 
+  copy:
+    src: make-alert.sh 
+    dest: /tmp/make-alert.sh 
+    mode: 0755
+
+- name: Create Alert 
+  shell: /tmp/make-alert.sh {{API_KEY}} {{item}}
+  loop:
+    - httpd-proc-check.json
+    - tomcat-proc-check.json
+    - host-not-report.json
