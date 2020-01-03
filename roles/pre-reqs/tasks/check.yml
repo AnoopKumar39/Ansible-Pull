@@ -11,3 +11,4 @@
     name: firewalld 
     state: stopped 
   when: ansible_distribution == "CentOS"
+  
