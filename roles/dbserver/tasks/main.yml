@@ -14,4 +14,4 @@
     dest: /tmp/schema.sql
 
 - name: Load Schema
-  shell: mysql </tmp/schema.sql
+  shell: mysql < /tmp/schema.sql
