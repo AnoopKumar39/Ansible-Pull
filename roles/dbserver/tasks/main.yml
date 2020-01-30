@@ -1,0 +1,17 @@
+- name: Install MariaDB Server
+  package:
+    name: mariadb-server
+    state: installed
+
+- name: Start MariaDB Server
+  service:
+    name: mariadb
+    state: started
+
+- name: Copy Schema
+  copy:
+    src: schema.sql
+    dest: /tmp/schema.sql
+
+- name: Load Schema
+  shell: mysql </tmp/schema.sql
