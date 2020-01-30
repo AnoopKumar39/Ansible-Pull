@@ -4,4 +4,4 @@
   roles:
    - webserver
    - appserver
-   - newrelic
+   #- newrelic
