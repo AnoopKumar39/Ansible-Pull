@@ -1,6 +1,6 @@
-DBUSER: dummy
-DBPASS: dummy
-DBHOST: dummy
-DBNAME: dummy
+DBUSER: student
+DBPASS: student@1
+DBHOST: localhost
+DBNAME: studentapp
 
 
