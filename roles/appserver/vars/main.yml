@@ -7,3 +7,7 @@ WAR_URL: https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war
 JDBC_URL: https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar
 TOMCAT_INIT_URL: https://s3-us-west-2.amazonaws.com/studentapi-cit/tomcat-init
 TOMCAT_VERSION: 9.0.30
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e3b0903a03357cc74f05a01210bd48d059983a6
