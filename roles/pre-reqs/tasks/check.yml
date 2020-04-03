@@ -10,5 +10,5 @@
   service:
     name: firewalld 
     state: stopped 
-  when: ansible_distribution == "CentOS"
+  when: ansible_distribution == "Redhat"
   
