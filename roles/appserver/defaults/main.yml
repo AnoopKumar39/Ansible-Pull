@@ -1,6 +1,6 @@
 DBUSER: student
 DBPASS: student@1
-DBHOST: localhost
+DBHOST: dummy
 DBNAME: studentapp
 
 
