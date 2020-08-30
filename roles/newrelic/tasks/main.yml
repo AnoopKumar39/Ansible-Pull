@@ -41,3 +41,6 @@
     - tomcat-proc-check.json
     - host-not-report.json
     
+##- name: Create Alert 
+##  shell: /tmp/make-alert.sh {{API_KEY}} {{item}}
+##  loop:
