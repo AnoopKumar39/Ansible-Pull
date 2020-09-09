@@ -11,4 +11,4 @@
     name: firewalld 
     state: stopped 
   when: ansible_distribution == "Redhat"
-  
+####when: ansible_distribution == "Redhat"
