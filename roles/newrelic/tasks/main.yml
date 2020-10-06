@@ -44,3 +44,4 @@
 ##- name: Create Alert 
 ##  shell: /tmp/make-alert.sh {{API_KEY}} {{item}}
 ##  loop:
+##  shell: /tmp/make-alert
