@@ -4,3 +4,4 @@
    - name: Print a simple message with sample
      debug:
        msg: Hello World! from Sample.
+ ##msg: Hello World! from Sample.
